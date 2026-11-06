@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelectConvert</title>
+  <!-- i18n-bootstrap pattern: literal English below + data-i18n attributes;
+       shared/i18n.ts overwrites textContent only when a localized message
+       exists (Chrome 150 broke raw __MSG_ substitution in HTML). -->
+  <link rel="stylesheet" href="../styles/sele2173-base.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="sele2173 sele2173-popup">
+  <header class="sele2173-header">
+    <img class="sele2173-header__icon" src="../../icons/icon48.png" alt="" width="28" height="28">
+    <div class="sele2173-header__title">SelectConvert</div>
+    <span id="tierBadge" class="sele2173-badge sele2173-badge--free">Free</span>
+  </header>
+
+  <main class="sele2173-stack">
+    <!-- Master switch -->
+    <section>
+      <label class="sele2173-row" for="masterToggle">
+        <span class="sele2173-row__label" data-i18n="masterEnableLabel">Enable conversion tooltips</span>
+        <span class="sele2173-switch">
+          <input type="checkbox" id="masterToggle" role="switch" aria-checked="true">
+          <span class="sele2173-switch__track" aria-hidden="true"></span>
+        </span>
+      </label>
+    </section>
+
+    <!-- Current site -->
+    <section class="sele2173-card sele2173-card--flush" id="siteCard">
+      <p class="sele2173-eyebrow">This site</p>
+      <div class="sele2173-siterow">
+        <span class="sele2173-siterow__host" id="siteHost">…</span>
+        <button type="button" class="sele2173-btn sele2173-btn--secondary sele2173-btn--sm" id="siteToggle"
+                data-i18n="popupSiteDisable">Disable on this site</button>
+      </div>
+      <p class="sele2173-muted sele2173-popup__note" id="siteUnavailable" hidden
+         data-i18n="popupUnavailable">Not available on this page</p>
+    </section>
+
+    <!-- Usage -->
+    <section class="sele2173-card sele2173-card--flush">
+      <p class="sele2173-eyebrow">Usage</p>
+      <div class="sele2173-usage" id="usageLine">Today: 0 of 20 conversions</div>
+      <div class="sele2173-progress" id="usageProgress">
+        <div class="sele2173-progress__fill" id="usageFill" style="width: 0%"></div>
+      </div>
+    </section>
+
+    <!-- FX rates -->
+    <section class="sele2173-card sele2173-card--flush">
+      <p class="sele2173-eyebrow">Exchange rates</p>
+      <div class="sele2173-siterow">
+        <span class="sele2173-muted" id="ratesStatus">—</span>
+        <button type="button" class="sele2173-btn sele2173-btn--secondary sele2173-btn--sm" id="ratesRefresh">
+          <span data-i18n="popupRatesRefresh">Refresh exchange rates</span>
+          <span class="sele2173-pro-badge" id="ratesLock" hidden>Pro</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Upgrade (free tier only; visible-but-locked doctrine) -->
+    <section class="sele2173-card" id="upgradeCard">
+      <p class="sele2173-eyebrow">SelectConvert Pro</p>
+      <p class="sele2173-popup__planlabel"><span class="sele2173-badge sele2173-badge--free" data-i18n="planFree">Free</span></p>
+      <ul class="sele2173-list sele2173-muted" id="sc-free-features">
+        <li data-i18n="compareFree1">20 conversions a day</li>
+        <li data-i18n="compareFree2">One target unit per category</li>
+        <li data-i18n="compareFree3">Exchange rates refreshed daily</li>
+      </ul>
+      <p class="sele2173-popup__planlabel"><span class="sele2173-pro-badge" data-i18n="planPro">Pro</span></p>
+      <ul class="sele2173-list" id="sc-pro-features">
+        <li data-i18n="comparePro1">Unlimited conversions, no daily cap</li>
+        <li data-i18n="comparePro2">Up to 3 targets per category in one tooltip</li>
+        <li data-i18n="comparePro3">Rates every 6 hours, plus manual refresh</li>
+      </ul>
+      <button type="button" class="sele2173-btn sele2173-btn--pro sele2173-btn--block" id="upgradeBtn"
+              data-i18n="upgradeBtn">Upgrade</button>
+      <p class="sele2173-muted sele2173-popup__price" data-i18n="proPriceLine">Pro $4.99/month · $99 lifetime</p>
+      <p class="sele2173-muted sele2173-popup__price" data-i18n="proGuaranteeLine">14-day money-back guarantee. If Pro is not for you, email us and we refund you.</p>
+    </section>
+  </main>
+
+  <footer class="sele2173-footer">
+    <span>zovo.one</span>
+    <a href="https://zovo.one/privacy-policy" target="_blank" rel="noopener noreferrer"
+       data-i18n="footerPrivacy">Privacy policy</a>
+  </footer>
+
+  <script src="popup.js"></script>
+<script src="../../zovo150k.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* ============================================================================
+ * src/popup/popup.css — SelectConvert popup, on top of sele2173-base.css.
+ * Every class sele2173- prefixed; colors resolve through base tokens only.
+ * ========================================================================== */
+
+/* ---- Switch (master toggle) ------------------------------------------------ */
+.sele2173-switch { position: relative; display: inline-flex; flex: none; }
+.sele2173-switch input {
+  position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer;
+  width: 36px; height: 22px;
+}
+.sele2173-switch__track {
+  width: 36px; height: 22px; border-radius: 999px;
+  background: var(--sele2173-surface-2);
+  border: 1px solid var(--sele2173-border);
+  transition: background var(--sele2173-transition);
+  pointer-events: none;
+}
+.sele2173-switch__track::after {
+  content: ""; display: block; width: 16px; height: 16px; margin: 2px;
+  border-radius: 50%; background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.25);
+  transition: transform var(--sele2173-transition);
+}
+.sele2173-switch input:checked + .sele2173-switch__track { background: var(--sele2173-primary-strong); border-color: var(--sele2173-primary-strong); }
+.sele2173-switch input:checked + .sele2173-switch__track::after { transform: translateX(14px); }
+.sele2173-switch input:focus-visible + .sele2173-switch__track {
+  outline: 2px solid var(--sele2173-primary); outline-offset: 2px;
+}
+
+/* ---- Rows ------------------------------------------------------------------ */
+.sele2173-siterow { display: flex; align-items: center; justify-content: space-between; gap: var(--sele2173-space-3); }
+.sele2173-siterow__host {
+  font-family: var(--sele2173-font-mono); font-size: var(--sele2173-fs-caption);
+  color: var(--sele2173-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sele2173-btn--sm { min-height: 32px; padding: 6px 12px; font-size: var(--sele2173-fs-caption); }
+
+.sele2173-popup__note { margin: var(--sele2173-space-2) 0 0; font-size: var(--sele2173-fs-caption); }
+.sele2173-popup__price { margin: var(--sele2173-space-2) 0 0; text-align: center; font-size: var(--sele2173-fs-caption); }
+.sele2173-popup__planlabel { margin: var(--sele2173-space-2) 0 4px; font-size: var(--sele2173-fs-caption); }
+
+.sele2173-usage { font-size: var(--sele2173-fs-body); margin-bottom: var(--sele2173-space-2); }
+
+.sele2173-list { margin: 0 0 var(--sele2173-space-3); padding-left: 18px; font-size: var(--sele2173-fs-caption); color: var(--sele2173-text); }
+.sele2173-list li { margin: 2px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sele2173-switch__track, .sele2173-switch__track::after { transition: none !important; }
+}

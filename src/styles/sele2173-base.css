@@ -1,0 +1,399 @@
+/* ============================================================================
+ * sele2173-base.css —  brand design system
+ * ----------------------------------------------------------------------------
+ * The single shared stylesheet every  Chrome extension imports. It defines
+ * the full brand as CSS custom properties (colors, type scale, radii, shadows,
+ * transitions) plus the base component classes used across popup, options,
+ * onboarding, and the paywall modal.
+ *
+ * Source of truth: BUILD-RULES.md §  BRAND SYSTEM.
+ * Import first, before any per-extension stylesheet, so tokens cascade down:
+ *     <link rel="stylesheet" href="sele2173-base.css">
+ *     <link rel="stylesheet" href="popup.css">
+ *
+ * ANTI-FLEET: manual template substitution from engine base.css.template at
+ * scaffold time (zero unresolved placeholders, zero shared brand tokens) —
+ * identity sele2173, hue-27 amber/teal, LOCKED by TECHNICAL-BRIEF (do not re-hue).
+ * ========================================================================== */
+
+/* ---- Design tokens (light) ------------------------------------------------ */
+:root {
+  /* Brand — hue-27 amber/teal, LOCKED by TECHNICAL-BRIEF (do not re-hue).
+     The *-strong pair is the luminance-pinned AA variant of primary for
+     text-bearing fills and small-text links (white label on #da9862 is only
+     ~2.4:1; the engine's 2026-07-28 luminance doctrine pins pairwise ratios,
+     not just palette hexes). Both stay inside the hue-27 family (~26.6-27.3 deg). */
+  --sele2173-primary:        #da9862;   /* warm amber — hero, icons, tints, rings */
+  --sele2173-primary-dark:   #d07d39;   /* deep amber — small accents            */
+  --sele2173-primary-light:  #e4b38b;   /* subtle accents / backgrounds           */
+  --sele2173-primary-50:     #fbf4ee;   /* tint fill (accent-bg)                  */
+  --sele2173-primary-strong: #A85A1C;   /* AA amber — button fills, small links: white text 5.1:1 */
+  --sele2173-primary-strong-dark: #8F4C14; /* hover for -strong: white text 6.5:1 */
+  --sele2173-link:           #A85A1C;   /* small-text links (12-14px): 5.1:1 on white */
+  --sele2173-accent:         #47b6d1;   /* teal — secondary actions, highlights   */
+
+  /* Surfaces & text */
+  --sele2173-bg:             #FFFFFF;
+  --sele2173-surface:        #fbfaf9;   /* cards, input backgrounds               */
+  --sele2173-surface-2:      #F1F2F4;   /* nested / hover surface                 */
+  --sele2173-text:           #1A1A2E;   /* text primary                           */
+  --sele2173-text-secondary: #6B7280;
+  --sele2173-badge-free-text: #4B5563;  /* 6.7:1 on surface-2 (AA at 10px bold) */
+  --sele2173-border:         #e8e5e3;
+
+  /* Status — base tokens stay bright (fills, icons on tints); *-text variants
+     are the AA-safe derivatives for 12-14px TEXT on white/surface. */
+  --sele2173-success:        #10B981;
+  --sele2173-warning:        #F59E0B;
+  --sele2173-error:          #EF4444;
+  --sele2173-success-text:   #0B7A55;   /* 5.3:1 on white */
+  --sele2173-error-text:     #C81E1E;   /* 5.8:1 on white */
+  --sele2173-pro:            #F59E0B;   /* gold — PRO badges + upgrade CTAs        */
+  --sele2173-pro-dark:       #D97706;
+  --sele2173-on-pro:         #1A1A2E;   /* dark on gold = 8:1 (white on gold fails AA at 2.15:1) */
+  --sele2173-pro-text:       #8A4B06;   /* small gold text on white: 6.2:1 */
+
+  /* Typography */
+  --sele2173-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sele2173-font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  --sele2173-fs-caption:    12px;
+  --sele2173-fs-body:       14px;
+  --sele2173-fs-subheading: 16px;
+  --sele2173-fs-heading:    20px;
+  --sele2173-fs-title:      24px;
+  --sele2173-fs-hero:       44px;   /* the one big number per screen */
+  --sele2173-fw-body:       400;
+  --sele2173-fw-medium:     500;
+  --sele2173-fw-heading:    600;
+  --sele2173-lh:            1.5;
+
+  /* Radii — slightly rounder than 8/6/4 reads friendlier/premium */
+  --sele2173-radius-card:   12px;
+  --sele2173-radius-btn:    8px;
+  --sele2173-radius-input:  8px;
+  --sele2173-radius-pill:   9999px;
+
+  /* Shadows — soft, low, single-direction (premium ≠ hard drop shadow) */
+  --sele2173-shadow-sm: 0 1px 2px rgba(16,24,40,0.05);
+  --sele2173-shadow: 0 1px 3px rgba(16,24,40,0.06), 0 6px 16px -6px rgba(16,24,40,0.10);
+  --sele2173-shadow-lg: 0 24px 48px -12px rgba(16,24,40,0.28);
+
+  /* Motion */
+  --sele2173-transition: 150ms ease-in-out;
+
+  /* Layout */
+  --sele2173-popup-w:      360px;
+  --sele2173-popup-w-wide: 400px;
+  --sele2173-popup-maxh:   560px;
+  --sele2173-space-1: 4px;  --sele2173-space-2: 8px;  --sele2173-space-3: 12px;
+  --sele2173-space-4: 16px; --sele2173-space-5: 20px; --sele2173-space-6: 24px;
+  --sele2173-space-7: 32px; --sele2173-space-8: 40px;
+}
+
+/* ---- Dark mode ------------------------------------------------------------ */
+/* Follows the system preference by default; a manual [data-theme] on <html>
+ * (set from General → Theme) always wins in both directions. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --sele2173-primary-50:     #241f45;
+    --sele2173-bg:             #0F0F1A;
+    --sele2173-surface:        #1A1A2E;
+    --sele2173-surface-2:      #232338;
+    --sele2173-text:           #F5F5FA;
+    --sele2173-text-secondary: #A1A1AA;
+    --sele2173-badge-free-text: #A1A1AA;
+    --sele2173-border:         #2E2E45;
+    --sele2173-link:           #da9862;   /* primary itself is ~7.8:1 on the dark ground */
+    --sele2173-pro-text:       #E9A23B;   /* 6.9:1 on the dark ground */
+    --sele2173-success-text:   #34D399;
+    --sele2173-error-text:     #F87171;
+    --sele2173-shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+    --sele2173-shadow-lg: 0 20px 40px -8px rgba(0,0,0,0.6), 0 8px 16px -8px rgba(0,0,0,0.4);
+  }
+}
+:root[data-theme='dark'] {
+  --sele2173-primary-50:     #241f45;
+  --sele2173-bg:             #0F0F1A;
+  --sele2173-surface:        #1A1A2E;
+  --sele2173-surface-2:      #232338;
+  --sele2173-text:           #F5F5FA;
+  --sele2173-text-secondary: #A1A1AA;
+  --sele2173-badge-free-text: #A1A1AA;
+  --sele2173-border:         #2E2E45;
+  --sele2173-link:           #da9862;
+  --sele2173-pro-text:       #E9A23B;
+  --sele2173-success-text:   #34D399;
+  --sele2173-error-text:     #F87171;
+  --sele2173-shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+  --sele2173-shadow-lg: 0 20px 40px -8px rgba(0,0,0,0.6), 0 8px 16px -8px rgba(0,0,0,0.4);
+}
+
+/* ---- Base ----------------------------------------------------------------- */
+.sele2173-root,
+body.sele2173 {
+  margin: 0;
+  font-family: var(--sele2173-font);
+  font-size: var(--sele2173-fs-body);
+  line-height: var(--sele2173-lh);
+  color: var(--sele2173-text);
+  background: var(--sele2173-bg);
+  -webkit-font-smoothing: antialiased;
+}
+.sele2173-root *, .sele2173-root *::before, .sele2173-root *::after { box-sizing: border-box; }
+
+/* Popup sizing helper */
+.sele2173-popup {
+  width: var(--sele2173-popup-w);
+  max-height: var(--sele2173-popup-maxh);
+  overflow-y: auto;
+}
+.sele2173-popup--wide { width: var(--sele2173-popup-w-wide); }
+
+/* ---- Header --------------------------------------------------------------- */
+.sele2173-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sele2173-space-3);
+  padding: var(--sele2173-space-4) var(--sele2173-space-5);
+  border-bottom: 1px solid var(--sele2173-border);
+}
+.sele2173-header__icon { width: 28px; height: 28px; border-radius: var(--sele2173-radius-input); }
+.sele2173-header__title {
+  flex: 1; min-width: 0;
+  font-size: var(--sele2173-fs-subheading);
+  font-weight: var(--sele2173-fw-heading);
+  letter-spacing: -0.01em;
+}
+
+/* ---- Card ----------------------------------------------------------------- */
+.sele2173-card {
+  background: var(--sele2173-bg);
+  border: 1px solid var(--sele2173-border);
+  border-radius: var(--sele2173-radius-card);
+  padding: var(--sele2173-space-5);
+  box-shadow: var(--sele2173-shadow);
+}
+.sele2173-card--flush { box-shadow: none; background: var(--sele2173-surface); }
+
+/* ---- Buttons -------------------------------------------------------------- */
+.sele2173-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sele2173-space-2);
+  min-height: 40px;                /* comfortable premium tap target */
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: var(--sele2173-fs-body);
+  font-weight: var(--sele2173-fw-medium);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--sele2173-radius-btn);
+  cursor: pointer;
+  transition: background var(--sele2173-transition), border-color var(--sele2173-transition),
+              color var(--sele2173-transition), transform var(--sele2173-transition);
+}
+.sele2173-btn:active { transform: translateY(1px); }
+.sele2173-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sele2173-bg), 0 0 0 4px var(--sele2173-primary);
+}
+.sele2173-btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+.sele2173-btn--primary { background: var(--sele2173-primary-strong); color: #fff; }
+.sele2173-btn--primary:hover:not([disabled]) { background: var(--sele2173-primary-strong-dark); }
+
+.sele2173-btn--secondary {
+  background: var(--sele2173-surface);
+  color: var(--sele2173-text);
+  border-color: var(--sele2173-border);
+}
+.sele2173-btn--secondary:hover:not([disabled]) { background: var(--sele2173-surface-2); }
+
+.sele2173-btn--ghost { background: transparent; color: var(--sele2173-link); }
+.sele2173-btn--ghost:hover:not([disabled]) { background: var(--sele2173-primary-50); }
+
+/* Gold upgrade CTA — the only button that uses the PRO color. */
+.sele2173-btn--pro {
+  background: var(--sele2173-pro);
+  color: var(--sele2173-on-pro);
+  font-weight: var(--sele2173-fw-heading);
+}
+.sele2173-btn--pro:hover:not([disabled]) { background: var(--sele2173-pro-dark); }
+
+.sele2173-btn--block { width: 100%; }
+
+/* ---- Inputs --------------------------------------------------------------- */
+.sele2173-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: var(--sele2173-fs-body);
+  color: var(--sele2173-text);
+  background: var(--sele2173-surface);
+  border: 1px solid var(--sele2173-border);
+  border-radius: var(--sele2173-radius-input);
+  transition: border-color var(--sele2173-transition), box-shadow var(--sele2173-transition);
+}
+.sele2173-input:focus-visible {
+  outline: none;
+  border-color: var(--sele2173-primary);
+  box-shadow: 0 0 0 3px var(--sele2173-primary-50);
+}
+.sele2173-label {
+  display: block;
+  font-size: var(--sele2173-fs-caption);
+  font-weight: var(--sele2173-fw-medium);
+  color: var(--sele2173-text-secondary);
+  margin-bottom: var(--sele2173-space-1);
+}
+
+/* ---- PRO badge ------------------------------------------------------------ */
+.sele2173-pro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sele2173-pro-text);
+  background: transparent;
+  border: 1px solid var(--sele2173-pro);
+  border-radius: var(--sele2173-radius-pill);
+  line-height: 1.4;
+}
+.sele2173-pro-badge--solid { color: var(--sele2173-on-pro); background: var(--sele2173-pro); border-color: var(--sele2173-pro); }
+.sele2173-pro-badge__lock { width: 10px; height: 10px; }
+
+/* ---- Footer --------------------------------------------------------------- */
+.sele2173-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sele2173-space-3) var(--sele2173-space-5);
+  font-size: var(--sele2173-fs-caption);
+  color: var(--sele2173-text-secondary);
+  border-top: 1px solid var(--sele2173-border);
+}
+.sele2173-footer a { color: var(--sele2173-link); text-decoration: none; }
+.sele2173-footer a:hover { text-decoration: underline; }
+
+/* ---- Utility -------------------------------------------------------------- */
+.sele2173-muted { color: var(--sele2173-text-secondary); }
+.sele2173-mono  { font-family: var(--sele2173-font-mono); }
+.sele2173-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ===========================================================================
+ * PREMIUM COMPONENTS (v3) — the patterns that make a screen read premium.
+ * See DESIGN-SYSTEM.md for when/why to use each.
+ * ========================================================================= */
+
+/* Popup shell: sits on the neutral surface, comfortable padding, grid rhythm */
+.sele2173-popup { background: var(--sele2173-surface); }
+.sele2173-stack { display: flex; flex-direction: column; gap: var(--sele2173-space-4);
+  padding: var(--sele2173-space-5); }
+
+/* Section label — 11px uppercase tracked muted (AdBlock "NUMBER OF ITEMS…") */
+.sele2173-eyebrow {
+  margin: 0 0 var(--sele2173-space-2);
+  font-size: 11px; font-weight: var(--sele2173-fw-heading);
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--sele2173-text-secondary);
+}
+
+/* ---- Hero stat — the ONE thing the eye lands on first --------------------- */
+.sele2173-hero { text-align: center; padding: var(--sele2173-space-7) var(--sele2173-space-5); }
+.sele2173-hero__num {
+  font-size: var(--sele2173-fs-hero); font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.05; color: var(--sele2173-primary);
+}
+.sele2173-hero__num--pro { color: var(--sele2173-pro); }
+.sele2173-hero__label {
+  margin-top: var(--sele2173-space-2);
+  font-size: 11px; font-weight: var(--sele2173-fw-heading);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--sele2173-text-secondary);
+}
+.sele2173-hero__sub { margin-top: var(--sele2173-space-3); color: var(--sele2173-text); }
+/* gradient progress — thin, calm */
+.sele2173-progress { height: 6px; border-radius: 999px; background: var(--sele2173-surface-2); overflow: hidden; }
+.sele2173-progress__fill { height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--sele2173-primary), var(--sele2173-accent)); }
+
+/* Inline stat row — "12 today · 3 sites paused" */
+.sele2173-stats { display: flex; justify-content: center; gap: var(--sele2173-space-4);
+  font-size: var(--sele2173-fs-caption); color: var(--sele2173-text-secondary); }
+.sele2173-stats b { color: var(--sele2173-text); font-weight: var(--sele2173-fw-heading); }
+
+/* ---- Badges --------------------------------------------------------------- */
+.sele2173-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.4;
+  border-radius: var(--sele2173-radius-pill);
+}
+.sele2173-badge--pro  { color: var(--sele2173-on-pro); background: var(--sele2173-pro); }
+.sele2173-badge--free { color: var(--sele2173-badge-free-text); background: var(--sele2173-surface-2); }
+.sele2173-badge--new  { color: #fff; background: #2563EB; }
+
+/* ---- Loss-framing alert — the cost of NOT upgrading (use once, honestly) --- */
+.sele2173-alert {
+  display: flex; align-items: center; gap: var(--sele2173-space-2);
+  padding: 10px 12px; border-radius: var(--sele2173-radius-btn);
+  font-size: var(--sele2173-fs-body);
+}
+.sele2173-alert--warn {
+  color: var(--sele2173-error-text);
+  background: color-mix(in srgb, var(--sele2173-error) 8%, var(--sele2173-bg));
+  border: 1px solid color-mix(in srgb, var(--sele2173-error) 22%, transparent);
+}
+
+/* ---- Empty state — delight, never a blank box ----------------------------- */
+.sele2173-empty { text-align: center; padding: var(--sele2173-space-7) var(--sele2173-space-5); }
+.sele2173-empty__art { width: 96px; height: 96px; margin: 0 auto var(--sele2173-space-4); opacity: 0.9; }
+.sele2173-empty__title { font-size: var(--sele2173-fs-heading); font-weight: 700; letter-spacing: -0.01em; }
+.sele2173-empty__text { margin-top: var(--sele2173-space-2); color: var(--sele2173-text-secondary); }
+
+/* ---- Tip carousel — dismissible in-context hint --------------------------- */
+.sele2173-tip {
+  position: relative; border-radius: var(--sele2173-radius-card);
+  border: 1px solid var(--sele2173-border); background: var(--sele2173-bg);
+  border-left: 3px solid var(--sele2173-primary);
+  padding: var(--sele2173-space-4) var(--sele2173-space-5);
+}
+.sele2173-tip__foot { display: flex; justify-content: space-between; align-items: center;
+  margin-top: var(--sele2173-space-3); font-size: var(--sele2173-fs-caption); color: var(--sele2173-text-secondary); }
+.sele2173-tip__next { color: var(--sele2173-link); font-weight: var(--sele2173-fw-medium); cursor: pointer; }
+
+/* ---- List row ------------------------------------------------------------- */
+.sele2173-row {
+  display: flex; align-items: center; gap: var(--sele2173-space-3);
+  min-height: 44px; padding: var(--sele2173-space-2) var(--sele2173-space-3);
+  border-radius: var(--sele2173-radius-btn); cursor: pointer;
+  transition: background var(--sele2173-transition);
+}
+.sele2173-row:hover { background: var(--sele2173-primary-50); }
+.sele2173-row__label { flex: 1; min-width: 0; }
+.sele2173-row__meta { color: var(--sele2173-text-secondary); font-family: var(--sele2173-font-mono);
+  font-size: var(--sele2173-fs-caption); }
+
+/* ---- Segmented control — target-unit pickers ------------------------------ */
+.sele2173-seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--sele2173-space-2); }
+.sele2173-seg__item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: var(--sele2173-space-3); border: 1px solid var(--sele2173-border);
+  border-radius: var(--sele2173-radius-card); background: var(--sele2173-bg);
+  cursor: pointer; transition: border-color var(--sele2173-transition), background var(--sele2173-transition);
+}
+.sele2173-seg__item:hover { border-color: var(--sele2173-primary-light); }
+.sele2173-seg__item[aria-selected='true'] { border-color: var(--sele2173-primary); background: var(--sele2173-primary-50); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sele2173-root *, .sele2173-root *::before, .sele2173-root *::after {
+    transition: none !important; animation: none !important;
+  }
+}

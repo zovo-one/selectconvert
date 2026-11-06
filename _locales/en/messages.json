@@ -1,0 +1,530 @@
+{
+  "extName": {
+    "message": "SelectConvert · Unit & Currency Converter",
+    "description": "Extension name (max 75 chars; currently 41)."
+  },
+  "extDesc": {
+    "message": "Instant unit and currency conversion for anything you select on the web: highlight a value, see the conversion in a small tooltip.",
+    "description": "Extension description (max 132 chars, locked at 130 by the brief)."
+  },
+  "cmdToggle": {
+    "message": "Turn conversion tooltips on or off",
+    "description": "chrome.commands description for the Alt+U master toggle."
+  },
+  "masterEnableLabel": {
+    "message": "Enable conversion tooltips",
+    "description": "Master switch label (popup + options)."
+  },
+  "popupUsageToday": {
+    "message": "Today: $1 of $2 conversions",
+    "description": "Popup usage line. $1 = conversions used today, $2 = daily cap for the tier."
+  },
+  "popupUsageUnlimited": {
+    "message": "Today: $1 conversions · unlimited",
+    "description": "Popup usage line for Pro (no cap). $1 = conversions used today."
+  },
+  "popupSiteDisable": {
+    "message": "Disable on $1",
+    "description": "Popup per-site toggle, enabled state. $1 = hostname."
+  },
+  "popupSiteEnable": {
+    "message": "Enable on $1",
+    "description": "Popup per-site toggle, disabled state. $1 = hostname."
+  },
+  "popupUnavailable": {
+    "message": "Not available on this page",
+    "description": "Popup state on uninjectable pages (chrome://, Web Store, PDF)."
+  },
+  "popupRatesRefresh": {
+    "message": "Refresh exchange rates",
+    "description": "Popup Pro rates-refresh button."
+  },
+  "tooltipRatesFrom": {
+    "message": "rates from $1",
+    "description": "Tooltip FX staleness note. $1 = rate date (YYYY-MM-DD)."
+  },
+  "tooltipCurrencyOffline": {
+    "message": "Currency unavailable offline. Units still convert",
+    "description": "Tooltip note when currency is selected with no cached rates and no network."
+  },
+  "tooltipCapLine": {
+    "message": "Daily free limit reached",
+    "description": "Tooltip cap-variant line at the 21st free conversion of the day."
+  },
+  "upgradeBtn": {
+    "message": "Upgrade",
+    "description": "Upgrade call-to-action (tooltip cap variant, popup, options)."
+  },
+  "maybeLater": {
+    "message": "Maybe later",
+    "description": "Polite-dismiss control on every upgrade surface — always one click away."
+  },
+  "proPriceLine": {
+    "message": "Pro $$4.99/month · $$99 lifetime",
+    "description": "Pricing anchor. Literal dollars escaped as $$ (i18n rule)."
+  },
+  "proPriceLifetimeNote": {
+    "message": "$$99 once, not a subscription you forget.",
+    "description": "One-payment reframe under the lifetime price. Literal dollars escaped as $$."
+  },
+  "planPro": {
+    "message": "Pro",
+    "description": "Pro plan name badge in the Free vs Pro comparison (popup)."
+  },
+  "compareEyebrow": {
+    "message": "Free vs Pro",
+    "description": "Comparison caption above the free/pro breakdown (options sidebar)."
+  },
+  "compareFreeSummary": {
+    "message": "Free gives you 20 conversions a day, one target unit per category, and exchange rates refreshed daily.",
+    "description": "Honest free-tier baseline above the Pro stack (options sidebar)."
+  },
+  "compareFree1": {
+    "message": "20 conversions a day",
+    "description": "Free tier capability in the Free vs Pro comparison."
+  },
+  "compareFree2": {
+    "message": "One target unit per category",
+    "description": "Free tier capability in the Free vs Pro comparison."
+  },
+  "compareFree3": {
+    "message": "Exchange rates refreshed daily",
+    "description": "Free tier capability in the Free vs Pro comparison."
+  },
+  "comparePro1": {
+    "message": "Unlimited conversions, no daily cap",
+    "description": "Pro unlock in the Free vs Pro comparison (popup)."
+  },
+  "comparePro2": {
+    "message": "Up to 3 targets per category in one tooltip",
+    "description": "Pro unlock in the Free vs Pro comparison (popup)."
+  },
+  "comparePro3": {
+    "message": "Rates every 6 hours, plus manual refresh",
+    "description": "Pro unlock in the Free vs Pro comparison (popup)."
+  },
+  "proGuaranteeLine": {
+    "message": "14-day money-back guarantee. If Pro is not for you, email us and we refund you.",
+    "description": "Risk-reversal line under the price CTA (popup + options). The real guarantee: a 14-day refund, never a trial."
+  },
+  "optionsLicenseLabel": {
+    "message": "License key",
+    "description": "Options license panel input label (ZOVO- keys)."
+  },
+  "activateBtn": {
+    "message": "Activate",
+    "description": "License panel activate button."
+  },
+  "deactivateBtn": {
+    "message": "Deactivate license",
+    "description": "License panel deactivate button (Pro active state)."
+  },
+  "licenseInvalid": {
+    "message": "That key doesn't look right. Check for typos and try again.",
+    "description": "License panel error on a bad ZOVO- key (typed refusal, never a throw)."
+  },
+  "licenseActivated": {
+    "message": "Pro activated. Enjoy unlimited conversions.",
+    "description": "License panel success line after a valid ZOVO- key activates."
+  },
+  "addSiteBtn": {
+    "message": "Add",
+    "description": "Options site-list editor add button."
+  },
+  "postSuccessNudge": {
+    "message": "$1 conversions and counting. Pro removes the daily limit.",
+    "description": "Once-ever post-success nudge in the result tooltip after the 10th lifetime conversion. $1 = lifetime conversion count."
+  },
+  "footerPrivacy": {
+    "message": "Privacy policy",
+    "description": "Footer link text to https://zovo.one/privacy-policy."
+  },
+  "onbTitle": {
+    "message": "Highlight a number, convert it in place · SelectConvert",
+    "description": "Onboarding page <title>."
+  },
+  "onbSkip": {
+    "message": "Skip intro",
+    "description": "Onboarding skip link (top bar)."
+  },
+  "onbStepCounter": {
+    "message": "$1 of $2",
+    "description": "Onboarding progress counter. $1 = current step, $2 = total steps."
+  },
+  "onbNavNext": {
+    "message": "Keep going",
+    "description": "Onboarding primary nav button (middle steps)."
+  },
+  "onbNavBack": {
+    "message": "Back",
+    "description": "Onboarding secondary nav button."
+  },
+  "onbNavFinish": {
+    "message": "Start converting",
+    "description": "Onboarding final nav button (closes the tab)."
+  },
+  "onb1Eyebrow": {
+    "message": "Skip the new-tab detour",
+    "description": "Onboarding step 1 eyebrow."
+  },
+  "onb1H1": {
+    "message": "Stop opening a tab for every measurement.",
+    "description": "Onboarding step 1 headline."
+  },
+  "onb1Lede": {
+    "message": "A recipe says 350°F and your oven reads Celsius. A listing says 2.5 miles, a shop says €89. You highlight, open a tab, search, and lose your place.",
+    "description": "Onboarding step 1 lede."
+  },
+  "onb1Pt": {
+    "message": "SelectConvert ends the detour. Highlight a number with a unit or currency on any page and the conversion appears right next to your selection.",
+    "description": "Onboarding step 1 supporting paragraph."
+  },
+  "mockRecipeLabel": {
+    "message": "The recipe says",
+    "description": "Mock page line label, step 1."
+  },
+  "mockRecipe": {
+    "message": "Bake at 350°F for half an hour",
+    "description": "Mock page line, step 1."
+  },
+  "mockListingLabel": {
+    "message": "The listing says",
+    "description": "Mock page line label, step 1."
+  },
+  "mockListing": {
+    "message": "2.5 miles from the station",
+    "description": "Mock page line, step 1."
+  },
+  "mockShopLabel": {
+    "message": "The shop says",
+    "description": "Mock page line label, step 1."
+  },
+  "mockShop": {
+    "message": "€89, plus shipping",
+    "description": "Mock page line, step 1."
+  },
+  "onb1TagPain": {
+    "message": "New tab. Search. Scroll back.",
+    "description": "Pain tag under the step 1 mock."
+  },
+  "onb2Eyebrow": {
+    "message": "Convert as you read",
+    "description": "Onboarding step 2 eyebrow."
+  },
+  "onb2H1": {
+    "message": "Get the answer next to the number.",
+    "description": "Onboarding step 2 headline."
+  },
+  "onb2Lede": {
+    "message": "Select any measurement on any page. A small tooltip pops up with the conversion in about half a second. Units convert on your device; currencies use the latest daily rates.",
+    "description": "Onboarding step 2 lede."
+  },
+  "onb2DemoBtn": {
+    "message": "Watch it convert",
+    "description": "Step 2 demo replay button."
+  },
+  "mockLabelYou": {
+    "message": "You highlight",
+    "description": "Demo row label, step 2."
+  },
+  "mockLabelTip": {
+    "message": "The tooltip shows",
+    "description": "Demo row label, step 2."
+  },
+  "mockSel1": {
+    "message": "5 km",
+    "description": "Demo selection, step 2."
+  },
+  "mockRes1": {
+    "message": "5 km → 3.11 mi",
+    "description": "Demo conversion result, step 2."
+  },
+  "mockSel2": {
+    "message": "$$25",
+    "description": "Demo selection, step 2 ($$ = literal $)."
+  },
+  "mockRes2": {
+    "message": "$$25 → €23.10",
+    "description": "Demo conversion result, step 2 ($$ = literal $)."
+  },
+  "onb2Cap": {
+    "message": "One tooltip for everything",
+    "description": "Caption above the step 2 feature tags."
+  },
+  "onb2Tag1": {
+    "message": "8 unit categories",
+    "description": "Feature tag, step 2."
+  },
+  "onb2Tag2": {
+    "message": "31 currencies",
+    "description": "Feature tag, step 2."
+  },
+  "onb2Tag3": {
+    "message": "On-device",
+    "description": "Feature tag, step 2."
+  },
+  "onb3Eyebrow": {
+    "message": "Save your defaults once",
+    "description": "Onboarding step 3 eyebrow."
+  },
+  "onb3H1": {
+    "message": "Save the units you think in.",
+    "description": "Onboarding step 3 headline."
+  },
+  "onb3Lede": {
+    "message": "Defaults come from your browser locale, so this step is optional. Pick your units here and every tooltip starts in the right place.",
+    "description": "Onboarding step 3 lede."
+  },
+  "onb3Pt": {
+    "message": "Everything saves to this device only, and you can change it any time in Options.",
+    "description": "Onboarding step 3 supporting paragraph."
+  },
+  "formThinkIn": {
+    "message": "You think in",
+    "description": "Defaults form label, step 3."
+  },
+  "optMetric": {
+    "message": "Kilometers, kilograms, °C",
+    "description": "Defaults form option, metric system."
+  },
+  "optImperial": {
+    "message": "Miles, pounds, °F",
+    "description": "Defaults form option, imperial system."
+  },
+  "formHomeCur": {
+    "message": "Convert prices into",
+    "description": "Defaults form label, home currency."
+  },
+  "onbSaveBtn": {
+    "message": "Save my defaults",
+    "description": "Defaults form save button, step 3."
+  },
+  "onbSavedBtn": {
+    "message": "Defaults saved",
+    "description": "Defaults form save button after a successful save."
+  },
+  "onbSavedOk": {
+    "message": "Saved. Tooltips now start in your units.",
+    "description": "Defaults form success line."
+  },
+  "onbSaveNoPrefs": {
+    "message": "Could not reach your settings. You can change them later in Options.",
+    "description": "Defaults form honest failure line."
+  },
+  "onb4Eyebrow": {
+    "message": "Keep it on your device",
+    "description": "Onboarding step 4 eyebrow."
+  },
+  "onb4H1": {
+    "message": "Your selections never leave the page.",
+    "description": "Onboarding step 4 headline."
+  },
+  "onb4Lede": {
+    "message": "Conversions run on your device. The only request the extension ever makes is an anonymous exchange-rate fetch with currency codes and nothing else.",
+    "description": "Onboarding step 4 lede."
+  },
+  "onb4Stat1": {
+    "message": "sandboxed, no remote code",
+    "description": "Trust stat caption, MV3."
+  },
+  "onb4Stat2": {
+    "message": "anonymous request for daily rates",
+    "description": "Trust stat caption, single FX request."
+  },
+  "onb4Stat3": {
+    "message": "open source on GitHub",
+    "description": "Trust stat caption, MIT."
+  },
+  "onb4Pt": {
+    "message": "SelectConvert is where you meet Zovo. The bigger idea is an honest layer for the whole browser, one tool at a time. No tracking, no data resale, no SEO spam.",
+    "description": "Onboarding step 4 studio paragraph."
+  },
+  "onb4LinkWhy": {
+    "message": "Why I build Zovo",
+    "description": "Studio link, step 4."
+  },
+  "onb4LinkVision": {
+    "message": "The vision",
+    "description": "Studio link, step 4."
+  },
+  "onb4LinkSafe": {
+    "message": "How we keep you safe",
+    "description": "Studio link, step 4."
+  },
+  "onb4Trust1H": {
+    "message": "Keep conversions on your device",
+    "description": "Trust row heading, step 4."
+  },
+  "onb4Trust1P": {
+    "message": "Nothing leaves your device except an anonymous exchange-rate request (currency codes only).",
+    "description": "Trust row body, step 4 (locked disclosure wording)."
+  },
+  "onb4Trust2H": {
+    "message": "Get answers straight from the developer",
+    "description": "Trust row heading, step 4."
+  },
+  "onb4Trust2P": {
+    "message": "Not a faceless company. One developer ships in public, uses these tools daily, and answers directly at",
+    "description": "Trust row body, step 4 (GitHub link follows)."
+  },
+  "onb4Trust3H": {
+    "message": "Find every line on GitHub",
+    "description": "Trust row heading, step 4."
+  },
+  "onb4Trust3P": {
+    "message": "MIT-licensed and open. Audit the code, fork it, or build on it.",
+    "description": "Trust row body, step 4."
+  },
+  "onb5Eyebrow": {
+    "message": "Honest pricing",
+    "description": "Onboarding step 5 eyebrow."
+  },
+  "onb5H1": {
+    "message": "Free converts 20 a day. Pro never counts.",
+    "description": "Onboarding step 5 headline."
+  },
+  "onb5Lede": {
+    "message": "The free tier is a real tool, not a demo. One payment of ninety-nine dollars removes the daily cap and unlocks every Pro feature in this extension.",
+    "description": "Onboarding step 5 lede."
+  },
+  "planFree": {
+    "message": "Free",
+    "description": "Free plan name."
+  },
+  "priceFree": {
+    "message": "$$0",
+    "description": "Free plan price ($$ = literal $)."
+  },
+  "onb5FreePer": {
+    "message": "forever",
+    "description": "Free plan price suffix."
+  },
+  "onb5FreeF1": {
+    "message": "20 conversions every day",
+    "description": "Free plan feature."
+  },
+  "onb5FreeF2": {
+    "message": "One target unit per category",
+    "description": "Free plan feature."
+  },
+  "onb5FreeF3": {
+    "message": "All 8 unit categories and 31 currencies",
+    "description": "Free plan feature."
+  },
+  "onb5FreeF4": {
+    "message": "Fresh exchange rates daily",
+    "description": "Free plan feature."
+  },
+  "ribbonBestValue": {
+    "message": "Best value",
+    "description": "Ribbon on the featured lifetime plan card."
+  },
+  "planLifetime": {
+    "message": "Lifetime",
+    "description": "Lifetime plan name."
+  },
+  "priceLifetime": {
+    "message": "$$99",
+    "description": "Lifetime plan price ($$ = literal $)."
+  },
+  "onb5ProPer": {
+    "message": "one time",
+    "description": "Lifetime plan price suffix."
+  },
+  "onb5ProF1": {
+    "message": "Unlimited conversions, no daily cap",
+    "description": "Pro plan feature."
+  },
+  "onb5ProF2": {
+    "message": "Up to 3 targets per category in one tooltip",
+    "description": "Pro plan feature."
+  },
+  "onb5ProF3": {
+    "message": "Exchange rates refreshed every 6 hours",
+    "description": "Pro plan feature."
+  },
+  "onb5ProF4": {
+    "message": "Per-category decimal precision",
+    "description": "Pro plan feature."
+  },
+  "onb5ProF5": {
+    "message": "One payment, no subscription",
+    "description": "Pro plan feature."
+  },
+  "onb5Cta": {
+    "message": "Get lifetime for $$99",
+    "description": "Lifetime plan call-to-action ($$ = literal $)."
+  },
+  "onb5Guar": {
+    "message": "14-day money-back guarantee. Prefer monthly? It is $$4.99 on the same page.",
+    "description": "Under-CTA reassurance line ($$ = literal $)."
+  },
+  "onb6Eyebrow": {
+    "message": "You're set",
+    "description": "Onboarding step 6 eyebrow."
+  },
+  "onb6H1": {
+    "message": "Highlight anything. Convert it in place.",
+    "description": "Onboarding step 6 headline."
+  },
+  "onb6Lede": {
+    "message": "No setup left. Select a measurement on any page and the tooltip appears. Here is the whole cheat sheet.",
+    "description": "Onboarding step 6 lede."
+  },
+  "onb6SignH": {
+    "message": "Get answers from the developer",
+    "description": "Signature card heading, step 6."
+  },
+  "onb6SignBody": {
+    "message": "I build Zovo on my own, in the open. If something breaks, write to me and I answer. If you go Pro, your ninety-nine dollars funds the next honest tool, and your notes shape what it becomes.",
+    "description": "Signature card body, step 6."
+  },
+  "onb6LinkGh": {
+    "message": "Reach me on GitHub",
+    "description": "Studio link, step 6."
+  },
+  "onb6LinkVision": {
+    "message": "Where this is going",
+    "description": "Studio link, step 6."
+  },
+  "onb6Cheat1": {
+    "message": "Convert a measurement",
+    "description": "Cheat sheet row, step 6."
+  },
+  "onb6Kbd1": {
+    "message": "highlight it",
+    "description": "Cheat sheet row action, step 6."
+  },
+  "onb6Cheat2": {
+    "message": "Turn tooltips on or off",
+    "description": "Cheat sheet row, step 6."
+  },
+  "onb6Cheat3": {
+    "message": "Pause on one site",
+    "description": "Cheat sheet row, step 6."
+  },
+  "onb6Kbd3": {
+    "message": "toolbar icon",
+    "description": "Cheat sheet row action, step 6."
+  },
+  "onb6Cheat4": {
+    "message": "Change target units",
+    "description": "Cheat sheet row, step 6."
+  },
+  "onb6Kbd4": {
+    "message": "Options",
+    "description": "Cheat sheet row action, step 6."
+  },
+  "onb6Pt": {
+    "message": "Your first conversion is one highlight away. Try it on any page, any recipe, any price.",
+    "description": "Closing paragraph, step 6."
+  },
+  "footBuiltBy": {
+    "message": "Built by",
+    "description": "Footer attribution lead-in (zovo.one link follows)."
+  },
+  "footDisclosure": {
+    "message": "Nothing leaves your device except an anonymous exchange-rate request (currency codes only).",
+    "description": "Footer disclosure (locked wording, matches Options)."
+  }
+}

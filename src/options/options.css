@@ -1,0 +1,55 @@
+/* ============================================================================
+ * src/options/options.css — SelectConvert options page, on sele2173-base.css.
+ * ========================================================================== */
+
+.sele2173-optnav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: var(--sele2173-space-3);
+  padding: var(--sele2173-space-3) var(--sele2173-space-6);
+  background: var(--sele2173-bg); border-bottom: 1px solid var(--sele2173-border);
+}
+.sele2173-optnav__title { font-weight: var(--sele2173-fw-heading); flex: 1; }
+
+.sele2173-optwrap {
+  display: flex; gap: var(--sele2173-space-6); align-items: flex-start;
+  max-width: 1080px; margin: 0 auto; padding: var(--sele2173-space-6);
+}
+.sele2173-optmain {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: var(--sele2173-space-5);
+}
+@media (max-width: 1023px) { .sele2173-optwrap { flex-direction: column; } }
+
+.sele2173-opth1 { font-size: var(--sele2173-fs-title); font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+.sele2173-opth2 { font-size: var(--sele2173-fs-subheading); font-weight: var(--sele2173-fw-heading); margin: 0 0 var(--sele2173-space-3); }
+.sele2173-opt__hint { margin: var(--sele2173-space-2) 0 0; font-size: var(--sele2173-fs-caption); }
+
+/* ---- Target picker grid ---------------------------------------------------- */
+.sele2173-tgrid { display: flex; flex-direction: column; gap: var(--sele2173-space-2); margin-top: var(--sele2173-space-3); }
+.sele2173-trow {
+  display: grid; grid-template-columns: 130px 1fr 1fr 1fr; gap: var(--sele2173-space-2);
+  align-items: center;
+}
+.sele2173-trow__cat { font-size: var(--sele2173-fs-caption); font-weight: var(--sele2173-fw-medium); color: var(--sele2173-text-secondary); text-transform: capitalize; }
+.sele2173-trow select[disabled] { opacity: 0.55; }
+.sele2173-trow__lock { display: inline-flex; align-items: center; gap: 4px; }
+@media (max-width: 640px) { .sele2173-trow { grid-template-columns: 90px 1fr; } }
+
+/* ---- Formatting rows ------------------------------------------------------- */
+.sele2173-frow { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sele2173-space-4); }
+.sele2173-frow__head { display: flex; align-items: center; gap: var(--sele2173-space-2); margin: var(--sele2173-space-4) 0 var(--sele2173-space-1); }
+@media (max-width: 640px) { .sele2173-frow { grid-template-columns: 1fr; } }
+
+/* ---- Site list ------------------------------------------------------------- */
+.sele2173-sites { list-style: none; margin: 0 0 var(--sele2173-space-3); padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.sele2173-sites li {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sele2173-space-2);
+  padding: 6px 10px; border: 1px solid var(--sele2173-border); border-radius: var(--sele2173-radius-input);
+  font-family: var(--sele2173-font-mono); font-size: var(--sele2173-fs-caption);
+}
+.sele2173-sites button { border: 0; background: transparent; color: var(--sele2173-text-secondary); cursor: pointer; font-size: 14px; padding: 2px 6px; }
+.sele2173-sites button:hover { color: var(--sele2173-error-text); }
+.sele2173-siteform { display: flex; gap: var(--sele2173-space-2); }
+.sele2173-siteform .sele2173-input { flex: 1; }
+
+.sele2173-sb__privacy { margin: 0; font-size: 12.5px; color: var(--sele2173-text-secondary); }
